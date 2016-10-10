@@ -1,6 +1,6 @@
 {
   "project": {
-    "version": "1.0.0-beta.16",
+    "version": "1.0.0-beta.17",
     "name": "damishley"
   },
   "apps": [
@@ -15,9 +15,20 @@
       "prefix": "app",
       "mobile": false,
       "styles": [
+        "../node_modules/bootstrap/dist/css/bootstrap.min.css",
+        "../node_modules/primeng/resources/primeng.min.css",
+        "./assets/libs/semantic/dist/semantic.min.css",
+        "../node_modules/font-awesome/css/font-awesome.min.css",
         "styles.scss"
       ],
-      "scripts": [],
+      "scripts": [
+        "../node_modules/jquery/dist/jquery.min.js",
+        "../node_modules/tether/dist/js/tether.js",
+        "../node_modules/bootstrap/dist/js/bootstrap.min.js",
+        "../node_modules/hammerjs/hammer.min.js",
+        "./assets/libs/semantic/dist/semantic.min.js",
+        "./assets/libs/ckeditor/ckeditor.js"
+      ],
       "environments": {
         "source": "environments/environment.ts",
         "dev": "environments/environment.ts",

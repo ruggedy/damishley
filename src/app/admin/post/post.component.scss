@@ -1,0 +1,45 @@
+.preview {
+	width: 100%;
+	min-height: 20em;
+	height: auto;
+	padding: 3em;
+	border: 1px solid #F5F5F5;
+	margin-top: 3em;
+	background-color: white;
+}
+
+.main-container {
+	width: 100%;
+	margin-top: 3em;
+}
+
+.padded {
+	padding: 1em;
+	background-color: #FAFAFA;
+}
+
+.preview img {
+	max-width: 100% !important;
+}
+
+.button-container{
+	width: 10%;
+	margin-left: auto;
+	margin-right: auto;
+	padding: 1em 1em;
+}
+
+button{
+	width: 100%;
+}
+
+.image-container{
+	height: 100%;
+	width: 100%;
+	overflow: hidden;
+}
+
+.image-container img {
+	width: 100%;
+	height: auto;
+}

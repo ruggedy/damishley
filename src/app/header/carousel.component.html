@@ -1,0 +1,27 @@
+<div class="outer-wrap">
+    <div class="image-wrap" [@imageState]="imagePos" >
+        <div class="image-container" *ngFor="let image of images" >
+            <md-grid-list cols="2">
+                <md-grid-tile *ngFor="let item of image.image"  >
+                    <div class="image-sub-container">
+                        <img src="{{item}}" alt="">
+                    </div>
+                </md-grid-tile>
+            </md-grid-list>
+        </div>
+    </div>
+    <div class="content-wrap">
+        <md-grid-list cols="4" gutterSize="1px" rowHeight="fit" >
+            <md-grid-tile *ngFor="let item of images; let i = index;">
+                <div class="outer-info" (mouseover)=changeIndex(i) [ngClass]="currentIndex === i? 'sync'  : ''" >
+                    <div class="more-info" [ngClass]="currentIndex === i? 'sync' : ''"  >
+                        <h3>{{item.header}}</h3>
+                        <p>{{item.text}}</p>
+                        <button>Read More</button>
+                    </div>
+                </div>
+            </md-grid-tile>
+        </md-grid-list>
+    </div>
+</div>
+

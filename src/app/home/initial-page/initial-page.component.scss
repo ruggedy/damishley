@@ -1,0 +1,25 @@
+
+.main-container{
+	max-width: 1100px;
+	margin: 0 auto;
+	padding-top: 2em;
+
+}
+
+.main-body-content {
+	width: 100%;
+	min-height: 100vh;
+	height: auto;
+	margin-top: 3em;
+}
+
+.main-body-content md-grid-list {
+	height: 120vh;
+}
+
+.container-support {
+	width: 100%;
+	height: auto;
+	position: absolute;
+	top: 0;
+}

@@ -1,0 +1,10 @@
+<div class="tag-list">
+	<div class="tag-item" *ngFor="let tag of tagsList" >
+		<md-checkbox (change)="updateChecked(tag._id, $event)" [checked]="validateChecked(tag)" ></md-checkbox>
+		<label >{{tag.name}}</label>
+	</div>
+</div>
+<div class="add-tag">
+	<input [(ngModel)]="newTag" type="text" name="" value="">
+	<button (click)="addTag()" >Add</button>
+</div>

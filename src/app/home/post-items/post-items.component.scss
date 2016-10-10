@@ -1,0 +1,61 @@
+@import '../../../variables';
+
+.main-container{
+	position: relative;
+}
+.post-container {
+	display: flex;
+	position: relative;
+	padding: 2em;
+	margin-bottom: 30px;
+	background-color: white;
+}
+
+.post-container .image-container {
+	display: flex;
+	width: 35%;
+	height: 10em;
+	overflow: hidden;
+	justify-content: center;
+	align-items: center;
+}
+
+.post-container .image-container img {
+	width: auto;
+	height: 120%;
+}
+
+.post-container .content-container {
+	width: 65%;
+	padding-left: 1em;
+} 
+
+.post-container .content-container .sub-header {
+	font-size: .9em;
+	color: $accent-color;
+} 
+
+.post-container .content-container .title h3{
+	font-size: 1.4em;
+	line-height: 1.2;
+	word-spacing: .1em;
+	margin-bottom: .5em;
+	color: $primary-text-color;
+}
+
+.post-container .content-container .body{
+	width: 100%;
+	font-size: 1em;
+	color: $secondary-text-color;
+	margin-bottom: 2em;
+}
+
+.post-container .content-container .footer {
+	width: 100%;
+}
+
+.post-container .content-container .footer button {
+	background-color: $accent-color;
+	color: $primary-color-text;
+}
+

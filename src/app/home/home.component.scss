@@ -1,0 +1,25 @@
+@import '../../variables';
+
+:host {
+  display: block;
+}
+
+.main-content {
+  background: $main-bg-color;
+  margin-top: 60px;
+}
+
+.header-content {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  font-size: 1em;
+  color: $primary-color-text;
+  justify-content: center;
+  align-items: center
+}
+
+.header-content i {
+  font-size: 1.7em;
+  margin-bottom: .2em;
+}

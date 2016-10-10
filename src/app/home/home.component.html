@@ -1,0 +1,32 @@
+<app-toolbar [toggle]="toggleTracker" (navswitch)="navValue($event)" ></app-toolbar>
+<sm-sidebar class="left vertical inverted sidebar labeled icon menu" #sideNav>        
+    <a class="item">
+        <i class="home icon"></i> Home
+    </a>
+    <a class="item">
+        <p-accordion class="home-menu">
+            <p-accordionTab>
+                <header>
+                    <div class="header-content">
+                        <i class="fa fa-th-large"></i>
+                        Category
+                    </div>
+                </header>
+                <div *ngIf="categories"  class="categories-container">
+                    <div class="categories" *ngFor="let item of categories"  >
+                        {{item.name}}
+                    </div>
+                </div>
+            </p-accordionTab>
+        </p-accordion>
+    </a>
+    <a class="item" routerLink="/admin" >
+        <i class="fa fa-user"></i> Admin
+    </a>
+</sm-sidebar>
+
+<div class="main-content">
+	<router-outlet></router-outlet>
+</div>
+
+

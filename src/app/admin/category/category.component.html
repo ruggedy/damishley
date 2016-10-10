@@ -1,0 +1,13 @@
+<div class="category-list">
+	<md-radio-group (change)="updateRadio($event)" >
+		<div class="row">
+			<div *ngFor="let category of categoryList"  class="col-md-4">
+				<md-radio-button value="{{category._id}}" > {{category.name}} </md-radio-button>
+			</div>
+		</div>
+	</md-radio-group>
+</div>
+<div class="add-category">
+	<input [(ngModel)]="newCategory" type="text" name="" value="">
+	<button (click)="addCategory()" >Add</button>
+</div>

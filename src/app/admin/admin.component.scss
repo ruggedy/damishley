@@ -1,0 +1,34 @@
+@import '../../variables';
+
+.big-container{
+	padding-left: 275px;
+	max-width: 100%;
+}
+
+.side-nav{
+	position: fixed;
+	height: 100vh;
+	margin-left: -275px;
+	left: 275px;
+	width: 275px;
+	overflow-y: auto;
+	background-color: $Deep_Purple;
+
+}
+
+
+.main-content{
+	width: 100%;
+	position: relative;
+	padding: 20px;
+	background-color: #FAFAFA;
+}
+
+.header{
+	height: 5em;
+	font-size: 1.8em;
+	color: #f7f7f7;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
