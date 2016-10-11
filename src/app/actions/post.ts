@@ -15,22 +15,22 @@ export const ActionTypes = {
 
 
 
-export class getPosts implements Action{
+export class GetPosts implements Action{
 	type = ActionTypes.GET;
 }
 
-export class getPostsComplete implements Action{
+export class GetPostsComplete implements Action{
 	type = ActionTypes.GET_COMPLETE;
 
 	constructor(public payload: Post[]){}
 }
 
-export class getFeatured implements Action{
+export class GetFeatured implements Action{
 	type = ActionTypes.GET_FEATURED;
 
 }
 
-export class getFeaturedComplete implements Action{
+export class GetFeaturedComplete implements Action{
 	type = ActionTypes.GET_FEATURED_COMPLETE
 
 	constructor(public payload: Post){}
@@ -58,9 +58,9 @@ export type Actions
 	= AddPost
 	| EditPost
 	| DeletePost
-	| getPosts
-	| getPostsComplete
-	| getFeatured
-	| getFeaturedComplete
+	| GetPosts
+	| GetPostsComplete
+	| GetFeatured
+	| GetFeaturedComplete
 
 

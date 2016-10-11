@@ -1,6 +1,8 @@
 /* You can add global styles to this file, and also import other style files */
 @import "./variables";
 @import '~@angular/material/core/theming/prebuilt/deeppurple-amber.css';
+@import "~quill/dist/quill.snow.css";
+@import "~quill/dist/quill.bubble.css";
 /* Reset */
 html,
 body,
@@ -60,20 +62,24 @@ input {
   padding: 8px;
 }
 
-button {
-  background-color: #106cc8;
-  border-style: none;
-  color: rgba(255, 255, 255, 0.87);
-  cursor: pointer;
-  display: inline-block;
-  font-size: 14px;
-  height: 40px;
-  padding: 8px 18px;
-  text-decoration: none;
-}
+// button {
+//   background-color: #106cc8;
+//   border-style: none;
+//   color: rgba(255, 255, 255, 0.87);
+//   cursor: pointer;
+//   display: inline-block;
+//   font-size: 14px;
+//   height: 40px;
+//   padding: 8px 18px;
+//   text-decoration: none;
+// }
 
-button:hover {
-  background-color: #28739e;
+// button:hover {
+//   background-color: #28739e;
+// }
+
+div.ui-editor-toolbar{
+	display: none;
 }
 
 .carousel-control{

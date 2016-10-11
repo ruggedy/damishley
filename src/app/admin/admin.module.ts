@@ -12,8 +12,10 @@ import { PostService, ImageUploadService } from '../shared/index';
 import { CKEditorModule } from 'ng2-ckeditor';
 import { MdRadioModule } from '@angular/material/radio';
 import { MdCheckboxModule } from '@angular/material/checkbox';
-import { AccordionModule } from 'primeng/primeng';
+import { AccordionModule, EditorModule } from 'primeng/primeng';
 import { NgSemanticModule } from 'ng-semantic';
+import { TinyMCEComponent } from './tinymce/tinymce.component';
+import { TinyMCEValueAccessor} from './tinymce/tinymce.valueaccessor';
 
 
 @NgModule({
@@ -26,13 +28,16 @@ import { NgSemanticModule } from 'ng-semantic';
     MdRadioModule, 
     MdCheckboxModule, 
     AccordionModule,
-    NgSemanticModule
+    NgSemanticModule,
+	EditorModule
     ],
   declarations: [
     AdminComponent, 
     PostComponent, 
     CategoryComponent, 
-    TagsComponent
+    TagsComponent,
+	TinyMCEComponent,
+	TinyMCEValueAccessor
     ],
   providers: [
     PostService, 

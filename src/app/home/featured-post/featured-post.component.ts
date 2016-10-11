@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { BlogService } from '../../shared/index';
+import { Component, OnInit, Input } from '@angular/core';
+import { Post } from '../../models/post';
 
 @Component({
 	selector: 'app-featured-post',
@@ -7,19 +7,12 @@ import { BlogService } from '../../shared/index';
 	styleUrls: ['./featured-post.component.scss']
 })
 export class FeaturedPostComponent implements OnInit {
-	post: any;
+	@Input()post: Post;
 	
-	constructor( private _blogService: BlogService) { }
+	constructor( ) { }
 
 	ngOnInit() { 
-		this._blogService.getFeaturedPost()
-			.subscribe(
-				data => {
-					this.post = data.obj.post;
-					console.log(data.obj.post);
-				},
-				error=> console.log(error)
-			)
+		
 	}
 
 }

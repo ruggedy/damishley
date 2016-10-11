@@ -13,6 +13,8 @@ import { of } from 'rxjs/observable/of';
 
 import { PostService, BlogService } from '../shared';
 import * as post from '../actions/post';
+import * as category from '../actions/category';
+import * as tag from '../actions/tag';
 
 
 
@@ -36,16 +38,22 @@ export class PostEffects {
 	@Effect()
 	get$: Observable<Action> = this.actions$
 		.ofType(post.ActionTypes.GET)
-		.startWith( new post.getPosts())
+		.startWith( new post.GetPosts())
 		.switchMap(() => {
 			return Observable.concat(
 				this.blogService.getPosts()
-				.map(res => new post.getPostsComplete(res.obj))
-				.catch(()=> of(new post.getPostsComplete(null))),
+				.map(res => new post.GetPostsComplete(res.obj))
+				.catch(()=> of(new post.GetPostsComplete(null))),
 
 				this.blogService.getFeaturedPost()
-					.map(res => new post.getFeaturedComplete(res.obj))
-					.catch(()=> of(new post.getFeaturedComplete(null)))
+					.map(res => new post.GetFeaturedComplete(res.obj.post))
+					.catch(()=> of(new post.GetFeaturedComplete(null))),
+				this.blogService.getCategories()
+					.map(res => new category.GetCategoryComplete(res.obj))
+					.catch(() => of(new category.GetCategoryComplete(null))),
+				this.blogService.getTags()
+					.map(res => new tag.GetTagComplete(res.obj))
+					.catch(() => of(new tag.GetTagComplete(null)))
 			)
 		})
 }

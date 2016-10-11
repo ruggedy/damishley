@@ -1,26 +1,21 @@
-import { Component, OnInit } from '@angular/core';
-import { BlogService } from '../../shared/index';
+import { Component, OnInit, Input, ChangeDetectionStrategy } from '@angular/core';
 
 @Component({
 	selector: 'app-post-items',
 	templateUrl: './post-items.component.html',
-	styleUrls: ['./post-items.component.scss']
+	styleUrls: ['./post-items.component.scss'], 
+	changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class PostItemsComponent implements OnInit {
 	
-	posts: any;
+	@Input()posts: any;
 
-	constructor(private _blogService: BlogService) { }
+	constructor() { 
+
+	}
 
 	ngOnInit() { 
-		this._blogService.getPosts()
-			.subscribe(
-				data => {
-					this.posts = data.obj;
-					console.log(data.obj);
-				},
-				error => console.log(error)
-			)
+		
 	}
 
 }

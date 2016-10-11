@@ -5,8 +5,8 @@
 				<label for="title">Title</label>
 				<textarea name="title" [(ngModel)]="title" rows="" cols=""></textarea>
 			</div>
-			<ckeditor [(ngModel)]="post" [config]="{uiColor: '#F5F5F5', height: '500px'}" (change)="onChange($event)" debouce="500">
-			</ckeditor>
+
+			<tinymce [id]="'editor'" (contentChange)="onChange($event)" style="height:500px" ></tinymce>
 		</div>
 	</div>
 
