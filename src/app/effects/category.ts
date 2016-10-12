@@ -21,18 +21,18 @@ export class CategoryEffects {
 	constructor(private actions$: Actions, private postService: PostService, private blogService: BlogService) { }
 
 	@Effect()
-	// add$: Observable<Action> = this.actions$
-	// 	.ofType(post.ActionTypes.ADD)
-	// 	.map(action => action.payload)
-	// 	.switchMap(query => {
-	// 		if ( query === undefined||''||null) {
-	// 			return empty();
-	// 		}
+	add$: Observable<Action> = this.actions$
+		.ofType(category.ActionTypes.ADD)
+		.map(action => action.payload)
+		.switchMap(query => {
+			if (query === undefined || '' || null) {
+				return empty();
+			}
 
-	// 		return this.postService.newPost(query)
-	// 			.map(value => new post.AddPost(value))
-	// 			.catch(() => of(new post.AddPost(null)));
-	// 	});
+			return this.postService.newCategory(query)
+				.map(value => new category.AddCompleted(value.obj))
+				.catch(() => of(new category.AddCompleted(null)));
+		});
 	@Effect()
 	get$: Observable<Action> = this.actions$
 		.ofType(category.ActionTypes.GET)
@@ -40,7 +40,7 @@ export class CategoryEffects {
 
 			return this.blogService.getCategories()
 				.map(res => new category.GetCategoryComplete(res.obj))
-				.catch(()=> of(new category.GetCategoryComplete(null)))
+				.catch(() => of(new category.GetCategoryComplete(null)))
 		})
 }
 

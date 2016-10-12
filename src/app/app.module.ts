@@ -18,6 +18,7 @@ import { reducer } from './reducers';
 import { PostEffects } from './effects/post';
 import { TagEffects } from './effects/tag';
 import { CategoryEffects } from './effects/category';
+import { ImageUploadEffects } from './effects/image-upload';
 
 
 // store imports
@@ -56,6 +57,7 @@ import { RouterStoreModule } from '@ngrx/router-store';
 		StoreLogMonitorModule,
 		EffectsModule.run(TagEffects),
 		EffectsModule.run(CategoryEffects),
+		EffectsModule.run(ImageUploadEffects),
 		EffectsModule.run(PostEffects)
 	],
 	providers: [

@@ -21,18 +21,18 @@ export class TagEffects {
 	constructor(private actions$: Actions, private postService: PostService, private blogService: BlogService) { }
 
 	@Effect()
-	// add$: Observable<Action> = this.actions$
-	// 	.ofType(post.ActionTypes.ADD)
-	// 	.map(action => action.payload)
-	// 	.switchMap(query => {
-	// 		if ( query === undefined||''||null) {
-	// 			return empty();
-	// 		}
+	add$: Observable<Action> = this.actions$
+		.ofType(tag.ActionTypes.ADD)
+		.map(action => action.payload)
+		.switchMap(query => {
+			if (query === undefined || '' || null) {
+				return empty();
+			}
 
-	// 		return this.postService.newPost(query)
-	// 			.map(value => new post.AddPost(value))
-	// 			.catch(() => of(new post.AddPost(null)));
-	// 	});
+			return this.postService.newTags(query)
+				.map(value => new tag.AddComplete(value.obj))
+				.catch(() => of(new tag.AddComplete(null)));
+		});
 	@Effect()
 	get$: Observable<Action> = this.actions$
 		.ofType(tag.ActionTypes.GET)
@@ -40,7 +40,7 @@ export class TagEffects {
 
 			return this.blogService.getTags()
 				.map(res => new tag.GetTagComplete(res.obj))
-				.catch(()=> of(new tag.GetTagComplete(null)))
+				.catch(() => of(new tag.GetTagComplete(null)))
 		})
 }
 

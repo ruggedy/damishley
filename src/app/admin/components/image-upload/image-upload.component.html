@@ -1,0 +1,12 @@
+<p-carousel headerText="Pictures" [value]="imageList">
+	<template let-image>
+		<div class="main-container">
+			<div class="image-container">
+				<img src="{{car}}" alt="">
+			</div>
+			<button type="button" class="btn btn-default" ngIIclipboard [cbContent]="car"></button>
+		</div>
+	</template>
+</p-carousel>
+
+<input type="file" (change)="imageUpload.emit($event.target.files)" multiple value="">

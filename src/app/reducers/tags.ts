@@ -44,6 +44,24 @@ export function reducer(state = initialState, action: tag.Actions): State {
 			})
 		}
 
+		case tag.ActionTypes.ADD_COMPLETE: {
+			if (action.payload === null) {
+				return state;
+			}
+
+			const tag = action.payload;
+
+			const newTagId = tag._id;
+			const newTagEntity = {
+				[tag._id]: tag
+			}
+
+			return Object.assign({}, state, {
+				ids: [...state.ids, newTagId],
+				entities: Object.assign({}, state.entities, newTagEntity)
+			})
+		}
+
 		// case post.ActionTypes.GET_FEATURED_COMPLETE: {
 		// 	if (action.payload === null){
 		// 		return state;

@@ -1,18 +1,19 @@
 import { Injectable } from '@angular/core';
-import { Http, Headers} from '@angular/http';
+import { Http, Headers, Response} from '@angular/http';
+import { Observable } from 'rxjs/Observable';
 import {environment} from '../../../environments/environment';
 
 @Injectable()
 export class ImageUploadService {
 	constructor() {}
 	
-	uploadImage(value: any) {
+	uploadImage(value: any): Observable<any> {
 		
-		return new Promise((resolve, reject) => {
+		return Observable.fromPromise(new Promise((resolve, reject) => {
 			var formData: any = new FormData();
 			var xhr = new XMLHttpRequest();
 			
-			let files = value.target.files;
+			let files = value;
 			formData.append('random', 'randomshit');
 			formData.append('another', 'stupid');
 			console.log(files)
@@ -33,8 +34,22 @@ export class ImageUploadService {
 			xhr.open('POST', environment.API_DEST +'image-upload', true);
 			xhr.send(formData);
 
-		})
+		}))
+		.map((res: Response) => res)
+        .catch(this.handleError);
 
+	}
+
+	/**
+	  * Handle HTTP error
+	  */
+	private handleError(error: any) {
+		// In a real world app, we might use a remote logging infrastructure
+		// We'd also dig deeper into the error to get a better message
+		let errMsg = (error.message) ? error.message :
+			error.status ? `${error.status} - ${error.statusText}` : 'Server error';
+		console.error(errMsg); // log to console instead
+		return Observable.throw(errMsg);
 	}
 }
 

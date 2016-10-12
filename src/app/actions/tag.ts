@@ -7,6 +7,7 @@ export const ActionTypes = {
 	GET: 					type('[tag] Get'),
 	GET_COMPLETE: 			type('[tag] Get Complete'),
 	ADD:  					type('[tag] Add'),
+	ADD_COMPLETE:  			type('[tag] Add Complete'),
 	EDIT: 					type('[tag] Edit'),
 	DELETE: 				type('[tag] Delete')
 };
@@ -29,6 +30,12 @@ export class Add implements Action{
 	constructor(public payload: Tag){}
 }
 
+export class AddComplete implements Action{
+	type = ActionTypes.ADD_COMPLETE;
+
+	constructor(public payload: Tag){}
+}
+
 export class Edit implements Action{
 	type = ActionTypes.EDIT;
 
@@ -45,5 +52,6 @@ export type Actions
 	= GetTag
 	| GetTagComplete
 	| Add
+	| AddComplete
 	| Edit
 	| Delete

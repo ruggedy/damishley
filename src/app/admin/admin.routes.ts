@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Route, RouterModule } from '@angular/router';
 import { AdminComponent } from './admin.component';
-import { PostComponent } from './post/post.component';
+import { PostComponent } from './containers/post/post.component';
 
 export const AdminRoutes: Route[] = [
   

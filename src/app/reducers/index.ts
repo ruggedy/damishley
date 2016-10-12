@@ -8,6 +8,8 @@ import { ActionReducer, combineReducers } from '@ngrx/store';
 
 import { compose } from '@ngrx/core/src/compose';
 import { Post } from '../models/post';
+import { Category } from '../models/category';
+import { Tag } from '../models/tag';
 
 import { storeFreeze } from 'ngrx-store-freeze';
 
@@ -17,6 +19,7 @@ import * as fromPost from './posts';
 import * as fromTag from './tags';
 import * as fromCategory from './categories';
 import * as fromEditor from './editors';
+import * as fromImageUpload from './image-uploads';
 import * as fromRouter from '@ngrx/router-store';
 
 export interface State {
@@ -24,7 +27,8 @@ export interface State {
 	tags: fromTag.State;
 	categories: fromCategory.State;
 	router: fromRouter.RouterState;
-	editor: fromEditor.State
+	editor: fromEditor.State;
+	imageUpload: fromImageUpload.State
 }
 
 
@@ -33,7 +37,8 @@ const reducers = {
 	tags: fromTag.reducer,
 	categories: fromCategory.reducer,
 	router: fromRouter.routerReducer,
-	editor: fromEditor.reducer
+	editor: fromEditor.reducer,
+	imageUpload: fromImageUpload.reducer
 }
 
 const developmentReducer = compose(storeFreeze, combineReducers)(reducers)
@@ -55,6 +60,14 @@ export function getEditorState(state$: Observable<State>) {
 }
 
 export const getActiveEditor = compose(fromEditor.getEditorState, getEditorState)
+
+// get ImagesUploaded
+
+export function getImageUploadState(state$: Observable<State>) {
+	return state$.select(state => state.imageUpload);
+}
+
+export const getImageUploaded = compose(fromImageUpload.getImageLocations, getImageUploadState)
 
 // Post Top Level selectors
 export function getPostState(state$: Observable<State>) {
@@ -87,6 +100,14 @@ export const getTagEntities = compose(fromTag.getTagEntities, getTagState);
 export const getTagIds = compose(fromTag.getTagIds, getTagState);
 export const getSelectedTagId = compose(fromTag.getSelectedTagId, getTagState);
 
+export const getAllTags = (state$: Observable<State>) => {
+	return combineLatest<{ [id: string]: Tag}, string[]>(
+		state$.let(getTagEntities),
+		state$.let(getTagIds)
+	)
+	.map(([entities, ids]) => ids.map(id => entities[id]))
+}
+
 
 // Categories Top Level Selectors
 
@@ -97,3 +118,12 @@ export function getCategoryState(state$: Observable<State>) {
 export const getCategoryEntities = compose(fromCategory.getCategoryEntities, getCategoryState);
 export const getCategoryIds = compose(fromCategory.getCategoryIds, getCategoryState);
 export const getSelectedCategoryId = compose(fromCategory.getSelectedCategoryId, getCategoryState);
+
+
+export const getAllCategories = (state$: Observable<State>) => {
+	return combineLatest<{ [id: string]: Category}, string[]>(
+		state$.let(getCategoryEntities),
+		state$.let(getCategoryIds)	
+	)
+	.map(([entities, ids]) => ids.map(id => entities[id]))
+}

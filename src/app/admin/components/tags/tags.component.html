@@ -5,6 +5,5 @@
 	</div>
 </div>
 <div class="add-tag">
-	<input [(ngModel)]="newTag" type="text" name="" value="">
-	<button (click)="addTag()" >Add</button>
+	<md-input placeholder="Add New Tag" (keypress)="addTag($event)" ></md-input>
 </div>

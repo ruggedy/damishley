@@ -1,0 +1,6 @@
+
+<tinymce [id]="'editor'" (contentChange)="postContent" ></tinymce>
+
+<app-category [categoryList]="categories$ | async" (newCategory)="addNewCategory($event)"  ></app-category>
+<app-tags [tagsList]="tags$ | async" (newTag)="addNewTag($event)" ></app-tags>
+<app-image-upload [imageList]="images$ | async" (imageUpload)="uploadImage($event)" ></app-image-upload>

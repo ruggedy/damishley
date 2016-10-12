@@ -44,6 +44,24 @@ export function reducer(state = initialState, action: category.Actions): State {
 			})
 		}
 
+		case category.ActionTypes.ADD_COMPLETE: {
+			if (action.payload === null) {
+				return state;
+			}
+
+			const category = action.payload;
+
+			const newCategoryId = category._id;
+			const newCategoryEntity = {
+				[category._id]: category
+			}
+
+			return Object.assign({}, state, {
+				ids: [...state.ids, newCategoryId],
+				entities: Object.assign({}, state.entities, newCategoryEntity)
+			})
+		}
+
 		// case post.ActionTypes.GET_FEATURED_COMPLETE: {
 		// 	if (action.payload === null){
 		// 		return state;
@@ -131,5 +149,6 @@ export function getCategoryEntities(state$: Observable<State>) {
 export function getSelectedCategoryId(state$: Observable<State>) {
 	return state$.select(state => state.selectedCategoryId);
 }
+
 
 

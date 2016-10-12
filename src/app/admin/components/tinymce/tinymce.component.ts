@@ -16,12 +16,14 @@ declare var tinymce;
 
 @Component({
 	selector: "tinymce",
-	templateUrl: "./tinymce.component.html"
+	templateUrl: "./tinymce.component.html",
+	styleUrls: ['./tinymce.component.scss']
 })
 export class TinyMCEComponent implements OnChanges, AfterViewInit, OnDestroy {
 
 	@Input() readonly: boolean = false;
 	@Input() id: string;
+	@Input()initialValue: string = "";
 	@Input() options: any = {
 		plugins: [
 			"advlist autolink lists link image charmap print preview anchor",
@@ -37,7 +39,7 @@ export class TinyMCEComponent implements OnChanges, AfterViewInit, OnDestroy {
 	baseURL: string = "";
 
 	private editor: any = null;
-	private initialValue: string = "";
+	
 
 	constructor(private zone: NgZone) {
 
