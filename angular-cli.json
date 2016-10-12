@@ -19,6 +19,7 @@
         "../node_modules/primeng/resources/primeng.min.css",
         "./assets/libs/semantic/dist/semantic.min.css",
         "../node_modules/font-awesome/css/font-awesome.min.css",
+        "custom-theme.scss",
         "styles.scss"
       ],
       "scripts": [

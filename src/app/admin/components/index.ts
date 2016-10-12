@@ -11,6 +11,7 @@ import { TinyMCEComponent } from './tinymce/tinymce.component';
 import { TinyMCEValueAccessor } from './tinymce/tinymce.valueaccessor';
 import { ImageUploadComponent } from './image-upload/image-upload.component';
 import { ClipboardDirective } from './image-upload/clipboard.directive';
+import { TitleComponent } from './title/title.component';
 
 
 export const COMPONENTS = [
@@ -20,6 +21,7 @@ export const COMPONENTS = [
 	TinyMCEValueAccessor,
 	ImageUploadComponent,
 	ClipboardDirective,
+	TitleComponent,
 ];
 
 

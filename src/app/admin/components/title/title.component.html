@@ -1,0 +1,12 @@
+<div class="main-container">
+	<div class="header">
+		<h2>Title of Post</h2>
+	</div>
+	<div class="title-container">
+		<md-input [value]="inTitle" (keyup)="outTitle.emit($event.target.value)" placeholder="Enter Post Title"></md-input>
+	</div>
+	<div class="featured-container">
+		<label for="">Featured?</label>
+		<md-checkbox (change)="checked.emit($event.checked)"></md-checkbox>
+	</div>
+</div>

@@ -1,4 +1,5 @@
 
+<app-title></app-title>
 <tinymce [id]="'editor'" (contentChange)="postContent" ></tinymce>
 
 <app-category [categoryList]="categories$ | async" (newCategory)="addNewCategory($event)"  ></app-category>
