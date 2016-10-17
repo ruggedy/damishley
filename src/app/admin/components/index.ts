@@ -18,6 +18,7 @@ import { PostItemListComponent } from './post-item-list/post-item-list.component
 import { Md2AccordionTab } from './accordion/accordiontab';
 import { Md2Accordion } from './accordion/accordionpanel';
 import { SidePanelComponent } from './side-panel/side-panel.component';
+import { PostViewComponent } from './post-view/post-view.component';
 
 
 export const COMPONENTS = [
@@ -32,7 +33,8 @@ export const COMPONENTS = [
 	PostItemListComponent,
 	Md2Accordion,
 	Md2AccordionTab, 
-	SidePanelComponent
+	SidePanelComponent,
+    PostViewComponent
 ];
 
 

@@ -4,6 +4,7 @@ import { AdminComponent } from './admin.component';
 import { PostComponent } from './containers/post/post.component';
 import { ViewSelectedPostComponent } from './containers/view-selected-post/view-selected-post.component';
 import { AllPostComponent } from './containers/all-post/all-post.component';
+import { ViewSelectedComponent } from './containers/view-selected/view-selected.component';
 
 export const AdminRoutes: Route[] = [
   
@@ -23,7 +24,12 @@ export const AdminRoutes: Route[] = [
 		{
 			path: 'create',
 			component: PostComponent
-		}
+		},
+        { 
+            path: 'view/:id',
+            component: ViewSelectedComponent
+
+        }
 	]
   }
 ];

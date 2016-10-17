@@ -13,6 +13,8 @@ import { AdminComponentsModule } from './components';
 import { SelectedPostComponent } from './containers/selected-post/selected-post.component';
 import { ViewSelectedPostComponent } from './containers/view-selected-post/view-selected-post.component';
 import { AllPostComponent } from './containers/all-post/all-post.component';
+import { ViewSelectedComponent } from './containers/view-selected/view-selected.component';
+import { SelectedPostViewComponent } from './containers/selected-post-view/selected-post-view.component';
 
 
 @NgModule({
@@ -31,6 +33,8 @@ import { AllPostComponent } from './containers/all-post/all-post.component';
 		SelectedPostComponent,
 		ViewSelectedPostComponent,
 		AllPostComponent,
+		ViewSelectedComponent,
+		SelectedPostViewComponent,
 	],
 	providers: [
 	]

@@ -161,3 +161,15 @@ md-toolbar{
 md-toolbar.small-toolbar md-toolbar-row{
 	height: 40px !important;
 }
+
+[md-raised-button], [md-fab], [md-mini-fab], [md-button], [md-icon-button] {
+    min-width: 2px !important;
+}
+
+.Grid--gutters {
+  margin: -1em 0 0 -1em;
+}
+.Grid--gutters > [class^="col-"], 
+.Grid--gutters>  [class*=" col-"] {
+  padding: 1em 0 0 1em;
+}

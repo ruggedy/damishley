@@ -12,6 +12,7 @@ export class PostItemComponent {
 	@Output() edit = new EventEmitter();
 	@Output() delete = new EventEmitter();
 	@Output() changeFeatured = new EventEmitter();
+    @Output() postItemClicked = new EventEmitter();
 
 	constructor() { }
 

@@ -10,13 +10,14 @@ import { IPaginationInstance } from 'ng2-pagination';
 export class PostItemListComponent {
 
 	@Input()posts: Post[];
-	@Output()edit = new EventEmitter()
-	@Output()delete = new EventEmitter()
-	@Output()feature = new EventEmitter()
+	@Output()edit = new EventEmitter();
+	@Output()delete = new EventEmitter();
+	@Output()feature = new EventEmitter();
+    @Output()postItemClicked = new EventEmitter();
 
 	public config: IPaginationInstance = {
 		id: 'post',
-		itemsPerPage: 6,
+		itemsPerPage: 8,
 		currentPage: 1
 	}
 

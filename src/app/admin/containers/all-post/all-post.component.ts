@@ -31,8 +31,12 @@ export class AllPostComponent {
 	 }
 
 	 featuredAction(event:string){
-		 this.store.dispatch(new post.EditFeatured(event))
+		 this.store.dispatch(new post.EditFeatured(event));
 	 }
+
+     postItemClickedAction(event: string ) {
+         this.router.navigate(['admin', 'view', event]);
+     }
 
 	ngOnInit() {
 	}
