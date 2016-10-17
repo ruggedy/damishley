@@ -1,0 +1,16 @@
+<a>
+	<md-card class="demo-basic" *ngIf="title">
+		<md-toolbar class="small-toolbar" color="primary"> {{ title }} </md-toolbar>
+		<div class="image-container">
+			<img md-card-image src="{{mainPicture}}" alt="">
+		</div>
+		<md-card-content>
+			<p>{{body | word:18 }}</p>
+		</md-card-content>
+		<md-card-footer>
+			<button md-button (click)="edit.emit(id)" color="primary"><i class="fa fa-pencil-square"></i></button>
+			<button md-button (click)="changeFeatured.emit(id)" color="accent"><i class="fa fa-star" [ngClass]="featured?'featured':'not-featured'" ></i></button>
+			<button md-button (click)="delete.emit(id)" color="warn"><i class="fa fa-trash"></i></button>
+		</md-card-footer>
+	</md-card>
+</a>

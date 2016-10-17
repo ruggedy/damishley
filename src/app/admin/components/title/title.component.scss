@@ -1,20 +1,25 @@
 @import '../../../../admin_palette';
-.main-container{
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    flex-wrap: wrap;
-    border: 1px solid $divider-color;
-    border-top-left-radius: 4px;
-    border-top-right-radius: 4px;
+
+.demo-basic {
+  padding: 0;
 }
 
-.header{
-    width: 100%;
-    background: $primary-color;
-    color: $primary-color-text;
-    padding: 1.5em 1em;
+
+.demo-basic md-card-content {
+  padding: 16px;
+}
+
+.body {
+	width: 100%;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-around;
+	align-items: center;
+	background-color: white;
+
+}
+
+.body  .title-input{
+	width: 70%;
 }
 

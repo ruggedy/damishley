@@ -18,13 +18,14 @@ export class TagsComponent implements OnInit {
 		let index = this.checked.indexOf(tag);
 		if (event.checked) {
 			if (index === -1) {
-				this.checked.push(tag);
+				this.checked = [...this.checked, tag];
 			}
 		} else {
 			if (index !== -1) {
-				this.checked.splice(index, 1)
+				this.checked = [...this.checked.slice(0, index), ...this.checked.slice(index+1)]
 			}
 		}
+
 
 		this.selectedTags.emit(this.checked);
 	}
@@ -43,8 +44,7 @@ export class TagsComponent implements OnInit {
 	}
 
 	validateChecked(value: any){
-
-	    if(this.checked[0]){
+	    if(this.checked && this.checked.length > 0){
 	        for(let i=0; i<this.checked.length; i++) {
 	            if(value === this.checked[i]) {
 	                return true

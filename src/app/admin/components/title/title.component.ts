@@ -9,6 +9,7 @@ export class TitleComponent implements OnInit {
 
     @Output() outTitle = new EventEmitter();
     @Input() inTitle = '';
+	@Input() inChecked= false;
     @Output()checked = new EventEmitter();
     constructor() { }
 

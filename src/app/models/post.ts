@@ -4,13 +4,7 @@ export interface Post {
 	body: string;
 	mainPicture: string;
 	featured: boolean;
-	category: {
-		id: string;
-		name: string;
-	},
-	tags: {
-		id: string,
-		name: string
-	}[]
+	category: string,
+	tags: string[]
 
 }

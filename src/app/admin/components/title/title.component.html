@@ -1,12 +1,11 @@
-<div class="main-container">
-	<div class="header">
-		<h2>Title of Post</h2>
-	</div>
-	<div class="title-container">
-		<md-input [value]="inTitle" (keyup)="outTitle.emit($event.target.value)" placeholder="Enter Post Title"></md-input>
-	</div>
-	<div class="featured-container">
-		<label for="">Featured?</label>
-		<md-checkbox (change)="checked.emit($event.checked)"></md-checkbox>
-	</div>
-</div>
+<md-card class="demo-basic">
+	<md-toolbar color="primary">Post Title</md-toolbar>
+	<md-card-content>
+		<div class="body">
+			<md-input class="title-input" divideColor="primary" [value]="inTitle" (keyup)="outTitle.emit($event.target.value)" placeholder="Enter Post Title"></md-input>
+			<md-checkbox (change)="checked.emit($event.checked)" [checked]="inChecked" align="end">
+				Featured?
+			</md-checkbox>
+		</div>
+	</md-card-content>
+</md-card>

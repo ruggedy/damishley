@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { DomSanitizer } from '@angular/platform-browser';
 import 'rxjs/Rx';
 import { Observable } from 'rxjs/Observable';
+import { Subscription } from 'rxjs/Subscription';
 import { Post } from '../../../models/post';
 import { Tag } from '../../../models/tag';
 import { Category } from '../../../models/category';
@@ -19,17 +20,21 @@ import * as post from '../../../actions/post';
 declare var tinymce: any;
 
 @Component({
-	selector: 'app-post',
-	templateUrl: './post.component.html',
-	styleUrls: ['./post.component.scss'],
+	selector: 'app-selected-post',
+	templateUrl: './selected-post.component.html',
+	styleUrls: ['./selected-post.component.scss'],
 	changeDetection: ChangeDetectionStrategy.OnPush
-
 })
 
-export class PostComponent implements OnInit {
+export class SelectedPostComponent implements OnInit, OnDestroy {
 	categories$: Observable<Category[]>;
 	tags$: Observable<Tag[]>;
 	images$: Observable<string[]>;
+	selectedPost$: Observable<Post>;
+
+	selectedPostSubscription: Subscription;
+
+	private postId: string | null = null;
 
 	private postContent: string;
 	private categoryContent: string;
@@ -43,13 +48,30 @@ export class PostComponent implements OnInit {
 		this.categories$ = store.let(fromRoot.getAllCategories)
 		this.tags$ = store.let(fromRoot.getAllTags)
 		this.images$ = store.let(fromRoot.getImageUploaded)
+		this.selectedPost$ = store.let(fromRoot.getSelectedPost)
+
+		this.selectedPostSubscription = this.selectedPost$.subscribe(
+			(data:Post) => {
+				if (data) {
+					this.postId = data._id;
+					this.postContent = data.body;
+					this.categoryContent = data.category;
+					this.tagsContent = data.tags;
+					this.title = data.title;
+					this.mainPicture = data.mainPicture;
+					this.featured = data.featured;
+
+					this.store.dispatch(new imageUpload.Selected(data.mainPicture))
+				}
+			}
+		)
 	}
 
 	onSubmit() {
 
 		if (this.postContent && this.title && this.mainPicture && this.categoryContent && this.tagsContent) {
-
-			let data: any = {
+			let data: Post = {
+				_id: this.postId,
 				title: this.title,
 				body: this.postContent,
 				category: this.categoryContent,
@@ -58,9 +80,9 @@ export class PostComponent implements OnInit {
 				featured: this.featured
 			}
 
-			this.store.dispatch(new post.AddPost(data))
-
+			this.store.dispatch(new post.EditPost(data));
 			this.router.navigate(['admin']);
+
 		}
 
 	}
@@ -88,6 +110,10 @@ export class PostComponent implements OnInit {
 
 	ngOnInit() {
 
+	}
+
+	ngOnDestroy() {
+		this.selectedPostSubscription.unsubscribe();
 	}
 
 

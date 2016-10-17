@@ -27,27 +27,57 @@ export class PostEffects {
 		.ofType(post.ActionTypes.ADD)
 		.map(action => action.payload)
 		.switchMap(query => {
-			if ( query === undefined||''||null) {
+			if (query === undefined || '' || null) {
 				return empty();
 			}
 
-			return this.postService.newPost(query)
-				.map(value => new post.AddPost(value))
-				.catch(() => of(new post.AddPost(null)));
+			if (query.featured) {
+				return Observable.concat(
+					this.postService.newPost(query)
+						.map(value => new post.AddPostComplete(value.obj))
+						.catch(() => of(new post.AddPost(null))),
+
+					this.blogService.getFeaturedPost()
+						.map(res => new post.GetFeaturedComplete(res.obj.post))
+						.catch(() => of(new post.GetFeaturedComplete(null))),
+
+					this.blogService.getCategories()
+						.map(res => new category.GetCategoryComplete(res.obj))
+						.catch(() => of(new category.GetCategoryComplete(null))),
+					this.blogService.getTags()
+						.map(res => new tag.GetTagComplete(res.obj))
+						.catch(() => of(new tag.GetTagComplete(null)))
+				)
+			} else {
+				return Observable.concat(
+					this.postService.newPost(query)
+						.map(value => new post.AddPostComplete(value.obj))
+						.catch(() => of(new post.AddPost(null))),
+
+					this.blogService.getCategories()
+						.map(res => new category.GetCategoryComplete(res.obj))
+						.catch(() => of(new category.GetCategoryComplete(null))),
+
+					this.blogService.getTags()
+						.map(res => new tag.GetTagComplete(res.obj))
+						.catch(() => of(new tag.GetTagComplete(null)))
+				)
+			}
 		});
+
 	@Effect()
 	get$: Observable<Action> = this.actions$
 		.ofType(post.ActionTypes.GET)
-		.startWith( new post.GetPosts())
+		.startWith(new post.GetPosts())
 		.switchMap(() => {
 			return Observable.concat(
 				this.blogService.getPosts()
-				.map(res => new post.GetPostsComplete(res.obj))
-				.catch(()=> of(new post.GetPostsComplete(null))),
+					.map(res => new post.GetPostsComplete(res.obj))
+					.catch(() => of(new post.GetPostsComplete(null))),
 
 				this.blogService.getFeaturedPost()
 					.map(res => new post.GetFeaturedComplete(res.obj.post))
-					.catch(()=> of(new post.GetFeaturedComplete(null))),
+					.catch(() => of(new post.GetFeaturedComplete(null))),
 				this.blogService.getCategories()
 					.map(res => new category.GetCategoryComplete(res.obj))
 					.catch(() => of(new category.GetCategoryComplete(null))),
@@ -55,6 +85,50 @@ export class PostEffects {
 					.map(res => new tag.GetTagComplete(res.obj))
 					.catch(() => of(new tag.GetTagComplete(null)))
 			)
-		})
-}
+		});
 
+	@Effect()
+	edit$: Observable<Action> = this.actions$
+		.ofType(post.ActionTypes.EDIT)
+		.map(action => action.payload)
+		.switchMap(value => {
+			if (value === undefined || '' || null) {
+				return empty();
+			}
+
+			return this.postService.editPost(value)
+				.map(res => new post.EditPostComplete(value))
+				.catch(() => of(new post.EditPostComplete(null)))
+
+
+		})
+
+	@Effect()
+	changeFeatured$: Observable<Action> = this.actions$
+		.ofType(post.ActionTypes.EDIT_FEATURED)
+		.map(action => action.payload)
+		.switchMap(value => {
+			if (value === undefined || null || '') {
+				return empty();
+			}
+
+			return this.postService.changeFeatured(value)
+				.map(res => new post.EditFeaturedComplete(value))
+				.catch(() => of(new post.EditFeaturedComplete(null)))
+		})
+
+	@Effect()
+	delete$: Observable<Action> = this.actions$
+		.ofType(post.ActionTypes.DELETE)
+		.map(action => action.payload)
+		.switchMap(value => {
+			if (value === undefined || null || '') {
+				return empty();
+			}
+
+			return this.postService.deletePost(value)
+				.map(res => new post.DeletePostComplete(value))
+				.catch(() => of(new post.DeletePostComplete(value)))
+		})
+
+}

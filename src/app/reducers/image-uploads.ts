@@ -8,7 +8,7 @@ import { combineLatest } from 'rxjs/observable/combineLatest';
 import * as imageUpload from '../actions/image-upload';
 
 export interface State {
-	imageLocation: string[]
+	imageLocation: string[];
 }
 
 
@@ -24,16 +24,24 @@ export function reducer(state = initialState, action: imageUpload.Actions): Stat
 				return state;
 			}
 
-			console.log(action.payload, 'image reducer')
-
 			return Object.assign({}, state, {
 				imageLocation: [...state.imageLocation, ...action.payload]
 			})
 		}
-	
-		default:{
+
+		case imageUpload.ActionTypes.SELECTED: {
+			if (action.payload === null || undefined || '') {
+				return state
+			}
+
+			return Object.assign({}, state, {
+				imageLocation: [action.payload]
+			})
+		}
+
+		default: {
 			return state;
-		}		
+		}
 	}
 }
 

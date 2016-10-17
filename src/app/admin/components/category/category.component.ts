@@ -8,9 +8,10 @@ import { Observable } from 'rxjs/Rx';
 	styleUrls: ['./category.component.scss'],
 })
 export class CategoryComponent implements OnInit {
-	@Input()categoryList: any[] = [];
-	@Output()newCategory = new EventEmitter()
-	@Output()selectedCategory = new EventEmitter();
+	@Input() categoryList: any[] = [];
+	@Input() currentCategory: string = ''; 
+	@Output() newCategory = new EventEmitter()
+	@Output() selectedCategory = new EventEmitter();
 
 	constructor() { }
 
@@ -23,6 +24,14 @@ export class CategoryComponent implements OnInit {
 	}
 	ngOnInit() { 
 
+	}
+
+	validateChecked(event){
+		if(event === this.currentCategory){
+			return true
+		}
+
+		return false;
 	}
 
 }

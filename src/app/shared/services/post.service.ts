@@ -70,12 +70,49 @@ export class PostService {
 			.catch(this.handleError);
 	}
 
+	changeFeatured(postId: string) {
+		let headers = new Headers({ 'content-type': 'application/json' });
+		let body = JSON.stringify({
+			post: postId
+		});
+		return this.http.patch(environment.API_DEST + 'post/featured', body, { headers: headers })
+			.map((res: Response) => res.json())
+			.catch(this.handleError);
+	}
+
+	editPost(post: Post){
+		let headers = new Headers({ 'content-type': 'application/json' });
+		let body = JSON.stringify({
+			id: post._id,
+			title: post.title,
+			body: post.body,
+			category: post.category,
+			tags: post.tags,
+			mainPicture: post.mainPicture,
+			featured: post.featured
+		})
+
+		return this.http.patch(environment.API_DEST + 'post/'+post._id, body, {headers: headers})
+			// .map((res: Response) => res.json())
+			// .catch(this.handleError)
+	}
+
+	deletePost(postId: string) {
+		let headers = new Headers({ 'content-type': 'application/json' });
+		let body = JSON.stringify({
+			post: postId
+		});
+
+		return this.http.delete(environment.API_DEST + 'post/'+postId, { headers: headers })
+	}
+
 	/**
 	  * Handle HTTP error
 	  */
 	private handleError(error: any) {
 		// In a real world app, we might use a remote logging infrastructure
 		// We'd also dig deeper into the error to get a better message
+		console.log('it hits', error)
 		let errMsg = (error.message) ? error.message :
 			error.status ? `${error.status} - ${error.statusText}` : 'Server error';
 		console.error(errMsg); // log to console instead

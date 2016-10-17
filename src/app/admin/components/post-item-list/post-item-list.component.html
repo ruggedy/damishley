@@ -1,0 +1,8 @@
+<ul class="list-container">
+	<li *ngFor="let post of posts | paginate: config">
+		<app-post-item  [post]="post" (edit)="edit.emit($event)" (delete)="delete.emit($event)" (changeFeatured)="feature.emit($event)"  ></app-post-item>
+	</li>
+</ul>
+<div class="pagination-container">
+	<pagination-controls [id]="config.id" (pageChange)="onPageChange($event)"></pagination-controls>
+</div>

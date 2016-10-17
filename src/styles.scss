@@ -31,6 +31,7 @@ body {
   font-size: 16px;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: #FAFAFA;
 }
 
 p {
@@ -49,14 +50,6 @@ ul {
 li {
   font-weight: 400;
   margin-top: 4px;
-}
-
-input {
-  border: 1px solid #106cc8;
-  font-size: 14px;
-  height: 40px;
-  outline: none;
-  padding: 8px;
 }
 
 // button {
@@ -156,4 +149,15 @@ md-sidenav {
   width: 250px !important;
   background-color: $accent-color;
   font-size: .9em;
+}
+
+
+md-toolbar{
+	min-height: 35px !important;
+	font-size: 1.1em
+}
+
+
+md-toolbar.small-toolbar md-toolbar-row{
+	height: 40px !important;
 }

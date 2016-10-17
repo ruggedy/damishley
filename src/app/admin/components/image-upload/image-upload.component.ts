@@ -1,16 +1,26 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, Input, Output, EventEmitter} from '@angular/core';
 
 @Component({
 	selector: 'app-image-upload',
 	templateUrl: './image-upload.component.html',
 	styleUrls: ['./image-upload.component.scss']
 })
-export class ImageUploadComponent implements OnInit {
+export class ImageUploadComponent {
 	@Input()imageList: string[] = [];
 	@Output() imageUpload = new EventEmitter();
-	constructor() { }
+	@Output() selectedImage = new EventEmitter();
+	@Input() currentImage: string;
+	constructor() {
+		
+	 }
 
-	ngOnInit() {
+	 validateChecked(event){
+		if(event === this.currentImage){
+			return true
+		}
+
+		return false;
 	}
+
 
 }

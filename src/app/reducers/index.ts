@@ -67,7 +67,7 @@ export function getImageUploadState(state$: Observable<State>) {
 	return state$.select(state => state.imageUpload);
 }
 
-export const getImageUploaded = compose(fromImageUpload.getImageLocations, getImageUploadState)
+export const getImageUploaded = compose(fromImageUpload.getImageLocations, getImageUploadState);
 
 // Post Top Level selectors
 export function getPostState(state$: Observable<State>) {
@@ -87,6 +87,14 @@ export const getFeaturedPost = (state$: Observable<State>) => {
 	return combineLatest<{ [id: string]: Post }, string>(
 		state$.let(getPostEntities),
 		state$.let(getFeaturedPostId)
+	)
+	.map(([ entities, id]) => entities[id])
+};
+
+export const getSelectedPost = (state$: Observable<State>) => {
+	return combineLatest<{ [id: string]: Post }, string>(
+		state$.let(getPostEntities),
+		state$.let(getSelectedPostId)
 	)
 	.map(([ entities, id]) => entities[id])
 };

@@ -1,12 +1,17 @@
-<div class="category-list">
-	<md-radio-group (change)="selectedCategory.emit($event.value)" >
-		<div class="row">
-			<div *ngFor="let category of categoryList"  class="col-md-4">
-				<md-radio-button value="{{category._id}}" > {{category.name}} </md-radio-button>
+<md-card class="demo-basic">
+	<md-toolbar color="primary">Choose Categories</md-toolbar>
+	<md-card-content>
+		<md-radio-group (change)="selectedCategory.emit($event.value); currentCategory = $event.value">
+			<div class="category-list">
+				<div class="category-item" [ngClass]="validateChecked(category._id)? 'checked':''" *ngFor="let category of categoryList">
+					<md-radio-button [value]="category._id" [checked]="validateChecked(category._id)"> {{category.name}} </md-radio-button>
+				</div>
 			</div>
+		</md-radio-group>
+	</md-card-content>
+	<md-card-footer>
+		<div class="add-category">
+			<md-input placeholder="Add New Category" (keypress)="addCategory($event)"></md-input>
 		</div>
-	</md-radio-group>
-</div>
-<div class="add-category">
-	<md-input placeholder="Add New Category" (keypress)="addCategory($event)" ></md-input>
-</div>
+	</md-card-footer>
+</md-card>

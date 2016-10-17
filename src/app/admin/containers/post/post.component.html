@@ -1,7 +1,15 @@
+<div class="main-container">
+	<app-title (outTitle)="title = $event" (checked)="featured = $event" ></app-title>
+	<tinymce [id]="'editor'" (contentChange)="postContent = $event.value"></tinymce>
 
-<app-title></app-title>
-<tinymce [id]="'editor'" (contentChange)="postContent" ></tinymce>
+	<div class="selection">
+		<app-category [categoryList]="categories$ | async" (newCategory)="addNewCategory($event)" (selectedCategory)="categoryContent = $event" ></app-category>
+		<app-tags [tagsList]="tags$ | async" (newTag)="addNewTag($event)" (selectedTags)="tagsContent = $event" ></app-tags>
+		<app-image-upload [imageList]="images$ | async" (imageUpload)="uploadImage($event)" (selectedImage)="mainPicture=$event" ></app-image-upload>
+	</div>
 
-<app-category [categoryList]="categories$ | async" (newCategory)="addNewCategory($event)"  ></app-category>
-<app-tags [tagsList]="tags$ | async" (newTag)="addNewTag($event)" ></app-tags>
-<app-image-upload [imageList]="images$ | async" (imageUpload)="uploadImage($event)" ></app-image-upload>
+	<div class="submit-button">
+		<button md-raised-button color="accent" (click)="onSubmit()" ><i class="fa fa-cloud-upload"></i>Submit</button>
+	</div>
+	
+</div>

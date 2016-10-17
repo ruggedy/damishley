@@ -3,6 +3,7 @@ import { MaterialModule } from '@angular/material';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 
+import { Ng2PaginationModule } from 'ng2-pagination';
 import { PipesModule } from '../../pipes';
 import { CarouselModule } from 'primeng/primeng';
 import { CategoryComponent } from './category/category.component';
@@ -12,6 +13,11 @@ import { TinyMCEValueAccessor } from './tinymce/tinymce.valueaccessor';
 import { ImageUploadComponent } from './image-upload/image-upload.component';
 import { ClipboardDirective } from './image-upload/clipboard.directive';
 import { TitleComponent } from './title/title.component';
+import { PostItemComponent } from './post-item/post-item.component';
+import { PostItemListComponent } from './post-item-list/post-item-list.component';
+import { Md2AccordionTab } from './accordion/accordiontab';
+import { Md2Accordion } from './accordion/accordionpanel';
+import { SidePanelComponent } from './side-panel/side-panel.component';
 
 
 export const COMPONENTS = [
@@ -22,6 +28,11 @@ export const COMPONENTS = [
 	ImageUploadComponent,
 	ClipboardDirective,
 	TitleComponent,
+	PostItemComponent,
+	PostItemListComponent,
+	Md2Accordion,
+	Md2AccordionTab, 
+	SidePanelComponent
 ];
 
 
@@ -32,6 +43,7 @@ export const COMPONENTS = [
 		RouterModule,
 		PipesModule,
 		CarouselModule,
+		Ng2PaginationModule
 	],
 	declarations: COMPONENTS,
 	exports: COMPONENTS

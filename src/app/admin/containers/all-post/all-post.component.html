@@ -1,0 +1,3 @@
+<div class="all-posts" >
+	<app-post-item-list [posts]="allPosts$ | async" (edit)="editAction($event)" (delete)="deleteAction($event)" (feature)="featuredAction($event)" ></app-post-item-list>
+</div>
