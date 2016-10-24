@@ -31,7 +31,7 @@ body {
   font-size: 16px;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: #FAFAFA;
+  background-color: #fdfdfd;
 }
 
 p {
@@ -172,4 +172,24 @@ md-toolbar.small-toolbar md-toolbar-row{
 .Grid--gutters > [class^="col-"], 
 .Grid--gutters>  [class*=" col-"] {
   padding: 1em 0 0 1em;
+}
+
+.small.Grid--gutters {
+  margin: -0.5em 0 0 -0.5em;
+}
+.small.Grid--gutters > [class^="col-"], 
+.small.Grid--gutters>  [class*=" col-"] {
+  padding: .5em 0 0 .5em;
+}
+
+.smallest.Grid--gutters {
+  margin: -1px 0 0 -1px;
+}
+.smallest.Grid--gutters > [class^="col-"], 
+.smallest.Grid--gutters>  [class*=" col-"] {
+  padding: 1px 0 0 1px;
+}
+
+.md-sidenav-content{
+	    transition: all 400ms cubic-bezier(0.25, 0.8, 0.25, 1) !important;
 }

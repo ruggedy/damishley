@@ -8,6 +8,7 @@ import { Observable } from 'rxjs/Rx';
 	styleUrls: ['./category.component.scss'],
 })
 export class CategoryComponent implements OnInit {
+	value = "";
 	@Input() categoryList: any[] = [];
 	@Input() currentCategory: string = ''; 
 	@Output() newCategory = new EventEmitter()
@@ -20,6 +21,7 @@ export class CategoryComponent implements OnInit {
 			e.preventDefault();
 			console.log(e.target.value);
 			this.newCategory.emit(e.target.value);
+			this.value = "";
 		}
 	}
 	ngOnInit() { 

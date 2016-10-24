@@ -1,26 +1,10 @@
 .main-container{
 	display: flex;
 	flex-direction: column;
-	justify-content: space-between;
-	height: 85em;
-}
-
-.selection{
-	display: flex;
-	flex-direction: row;
-	justify-content: space-between;
-}
-
-.selection app-Tags{
-	width: 33%
-}
-
-.selection app-category{
-	width: 33%
-}
-
-.selection app-image-upload{
-	width: 33%
+	max-width: 1010px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-top: 4em;
 }
 
 .submit-button {

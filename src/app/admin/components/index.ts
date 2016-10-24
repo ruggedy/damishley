@@ -1,4 +1,5 @@
 import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 import { MaterialModule } from '@angular/material';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
@@ -19,6 +20,8 @@ import { Md2AccordionTab } from './accordion/accordiontab';
 import { Md2Accordion } from './accordion/accordionpanel';
 import { SidePanelComponent } from './side-panel/side-panel.component';
 import { PostViewComponent } from './post-view/post-view.component';
+import { AdminToolbarComponent } from './toolbar/toolbar.component';
+import { QuoteComponent } from './quote/quote.component';
 
 
 export const COMPONENTS = [
@@ -34,13 +37,16 @@ export const COMPONENTS = [
 	Md2Accordion,
 	Md2AccordionTab, 
 	SidePanelComponent,
-    PostViewComponent
+    PostViewComponent,
+	AdminToolbarComponent,
+	QuoteComponent
 ];
 
 
 @NgModule({
 	imports: [
 		CommonModule,
+		FormsModule,
 		MaterialModule,
 		RouterModule,
 		PipesModule,

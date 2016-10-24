@@ -1,6 +1,6 @@
 import { ModuleWithProviders } from '@angular/core';
 import { Route, RouterModule } from '@angular/router';
-import { HomeComponent, InitialPageComponent } from './index';
+import { HomeComponent, HomePageComponent } from './index';
 
 export const HomeRoutes: Route[] = [
   
@@ -10,8 +10,7 @@ export const HomeRoutes: Route[] = [
     children: [
       {
         path: '',
-        component: InitialPageComponent
-
+		component: HomePageComponent
       }
     ]
   }

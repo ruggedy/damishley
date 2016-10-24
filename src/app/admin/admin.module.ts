@@ -15,6 +15,7 @@ import { ViewSelectedPostComponent } from './containers/view-selected-post/view-
 import { AllPostComponent } from './containers/all-post/all-post.component';
 import { ViewSelectedComponent } from './containers/view-selected/view-selected.component';
 import { SelectedPostViewComponent } from './containers/selected-post-view/selected-post-view.component';
+import { QuoteViewComponent } from './containers/quote-view/quote-view.component';
 
 
 @NgModule({
@@ -22,8 +23,6 @@ import { SelectedPostViewComponent } from './containers/selected-post-view/selec
 		CommonModule,
 		AdminRoutingModule,
 		MaterialModule,
-		AccordionModule,
-		NgSemanticModule,
 		AdminComponentsModule,
 		Ng2PaginationModule
 	],
@@ -35,6 +34,7 @@ import { SelectedPostViewComponent } from './containers/selected-post-view/selec
 		AllPostComponent,
 		ViewSelectedComponent,
 		SelectedPostViewComponent,
+		QuoteViewComponent,
 	],
 	providers: [
 	]

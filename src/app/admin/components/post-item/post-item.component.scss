@@ -3,7 +3,7 @@ a {
 	cursor: pointer;
 }
 
-a:hover md-card .image-container .overlay {
+a:hover .image-container .overlay {
     background-color: rgba($color: black, $alpha: 0.3)
 }
 
@@ -46,10 +46,10 @@ md-card .image-container .overlay {
     display: flex;
     padding: 16px;
     flex-direction: column;
+	color: $primary-text-color;
 }
 
-.demo-basic md-card-content .random-line{
-    align-self: flex-end;
+.demo-basic md-card-footer .random-line{
     height: 2px;
     width: 100%;
     background-color: $accent-color;

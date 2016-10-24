@@ -5,6 +5,7 @@ import { PostComponent } from './containers/post/post.component';
 import { ViewSelectedPostComponent } from './containers/view-selected-post/view-selected-post.component';
 import { AllPostComponent } from './containers/all-post/all-post.component';
 import { ViewSelectedComponent } from './containers/view-selected/view-selected.component';
+import { QuoteViewComponent } from './containers/quote-view/quote-view.component';
 
 export const AdminRoutes: Route[] = [
   
@@ -29,7 +30,11 @@ export const AdminRoutes: Route[] = [
             path: 'view/:id',
             component: ViewSelectedComponent
 
-        }
+        },
+		{
+			path: 'quote',
+			component: QuoteViewComponent
+		}
 	]
   }
 ];

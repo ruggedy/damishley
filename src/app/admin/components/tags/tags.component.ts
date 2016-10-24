@@ -6,6 +6,7 @@ import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 	styleUrls: ['./tags.component.scss'],
 })
 export class TagsComponent implements OnInit {
+	value = "";
 	@Output()newTag = new EventEmitter();
 	@Input()tagsList: any[] = [];
 	@Input()checked: any[] = [];
@@ -36,6 +37,7 @@ export class TagsComponent implements OnInit {
 			e.preventDefault();
 			console.log(e.target.value);
 			this.newTag.emit(e.target.value);
+			this.value = "";
 		}
 	}
 

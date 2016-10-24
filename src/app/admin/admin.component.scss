@@ -1,16 +1,16 @@
 @import '../../variables';
 
 .big-container{
-	padding-left: 275px;
+	padding-left: 230px;
 	max-width: 100%;
 }
 
 .side-nav{
 	position: fixed;
 	height: 100vh;
-	margin-left: -275px;
-	left: 275px;
-	width: 275px;
+	margin-left: -230px;
+	left: 230px;
+	width: 230px;
 	overflow-y: auto;
 	background-color: $Deep_Purple;
 
@@ -20,7 +20,7 @@
 .main-content{
 	width: 100%;
 	position: relative;
-	background-color: #FAFAFA;
+	background-color: #fdfdfd;
 }
 
 .header{
@@ -30,4 +30,14 @@
 	display: flex;
 	justify-content: center;
 	align-items: center;
+}
+
+.header a{
+	text-decoration: none;
+	color: inherit;
+	cursor: pointer;
+}
+
+app-toolbar{
+	height: 40px;
 }

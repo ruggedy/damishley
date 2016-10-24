@@ -17,7 +17,7 @@ export class PostItemListComponent {
 
 	public config: IPaginationInstance = {
 		id: 'post',
-		itemsPerPage: 8,
+		itemsPerPage: 12,
 		currentPage: 1
 	}
 

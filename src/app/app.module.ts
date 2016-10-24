@@ -10,13 +10,14 @@ import { HomeModule } from './home/home.module';
 import { AdminModule } from './admin/admin.module';
 import { AppComponent } from './app.component';
 
-import { PostService, ImageUploadService } from './shared'
+import { PostService, ImageUploadService, BlogService, QuoteService } from './shared'
 
 
 
 import { reducer } from './reducers';
 import { PostEffects } from './effects/post';
 import { TagEffects } from './effects/tag';
+import { QuoteEffects } from './effects/quote';
 import { CategoryEffects } from './effects/category';
 import { ImageUploadEffects } from './effects/image-upload';
 
@@ -47,22 +48,18 @@ import { RouterStoreModule } from '@ngrx/router-store';
 
 		RouterStoreModule.connectRouter(),
 
-		StoreDevtoolsModule.instrumentStore({
-			monitor: useLogMonitor({
-				visible: true,
-				position: 'right'
-			})
-		}),
-
-		StoreLogMonitorModule,
+		
 		EffectsModule.run(TagEffects),
 		EffectsModule.run(CategoryEffects),
 		EffectsModule.run(ImageUploadEffects),
+		EffectsModule.run(QuoteEffects),
 		EffectsModule.run(PostEffects)
 	],
 	providers: [
 		PostService,
-		ImageUploadService
+		ImageUploadService,
+		BlogService,
+		QuoteService
 	],
 	bootstrap: [AppComponent]
 })

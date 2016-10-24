@@ -10,12 +10,14 @@ import { compose } from '@ngrx/core/src/compose';
 import { Post } from '../models/post';
 import { Category } from '../models/category';
 import { Tag } from '../models/tag';
+import { Quote } from '../models/quote';
 
 import { storeFreeze } from 'ngrx-store-freeze';
 
 import { environment } from '../../environments/environment'
 
 import * as fromPost from './posts';
+import * as fromQuote from './quotes';
 import * as fromTag from './tags';
 import * as fromCategory from './categories';
 import * as fromEditor from './editors';
@@ -28,7 +30,8 @@ export interface State {
 	categories: fromCategory.State;
 	router: fromRouter.RouterState;
 	editor: fromEditor.State;
-	imageUpload: fromImageUpload.State
+	imageUpload: fromImageUpload.State;
+	quote: fromQuote.State
 }
 
 
@@ -38,7 +41,8 @@ const reducers = {
 	categories: fromCategory.reducer,
 	router: fromRouter.routerReducer,
 	editor: fromEditor.reducer,
-	imageUpload: fromImageUpload.reducer
+	imageUpload: fromImageUpload.reducer,
+	quote: fromQuote.reducer
 }
 
 const developmentReducer = compose(storeFreeze, combineReducers)(reducers)
@@ -134,4 +138,23 @@ export const getAllCategories = (state$: Observable<State>) => {
 		state$.let(getCategoryIds)	
 	)
 	.map(([entities, ids]) => ids.map(id => entities[id]))
+}
+
+
+// Quote Top level selector
+
+export function getQuoteState(state$: Observable<State>) {
+	return state$.select(state => state.quote)
+}
+
+export const getQuoteId = compose(fromQuote.getQuoteId, getQuoteState);
+export const getQuoteEntity = compose(fromQuote.getQuoteEntitiy, getQuoteState);
+
+
+export const getQuote = (state$: Observable<State>) => {
+	return combineLatest<{ [id: string]: Quote}, string>(
+		state$.let(getQuoteEntity),
+		state$.let(getQuoteId)
+	)
+	.map(([entity, id]) => entity[id])
 }

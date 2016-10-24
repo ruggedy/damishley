@@ -25,12 +25,18 @@ export class TinyMCEComponent implements OnChanges, AfterViewInit, OnDestroy {
 	@Input() id: string;
 	@Input()initialValue: string = "";
 	@Input() options: any = {
+		noneditable_noneditable_class: 'fa',
 		plugins: [
-			"advlist autolink lists link image charmap print preview anchor",
+			"advlist autolink lists link image imagetools charmap print preview anchor",
 			"searchreplace visualblocks code fullscreen",
-			"insertdatetime media table contextmenu paste"
+			"insertdatetime media table contextmenu paste",
+			"textcolor colorpicker",
+			"wordcount","media ",
+			'fontawesome noneditable'
 		],
-		toolbar: "insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image"
+		menubar: "insert",
+		toolbar: "insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image | forecolor backcolor | media | fontawesome",
+		extended_valid_elements: 'span[*]'
 	};
 	@Output() contentChange = new EventEmitter();
 	@Output() blur = new EventEmitter();
