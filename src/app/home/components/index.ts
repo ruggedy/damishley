@@ -10,6 +10,8 @@ import { CarouselComponent } from './carousel/carousel.component';
 import { FeaturedPostComponent } from './featured-post/featured-post.component'
 import { HomePostItemComponent } from './home-post-item/home-post-item.component';
 import { HomePostItemListComponent } from './home-post-item-list/home-post-item-list.component';
+import { SocialLinksComponent } from './social-links/social-links.component';
+
 
 
 
@@ -18,7 +20,8 @@ export const COMPONENTS = [
 	CarouselComponent,
 	FeaturedPostComponent,
 	HomePostItemComponent,
-	HomePostItemListComponent
+	HomePostItemListComponent,
+    SocialLinksComponent
 ];
 
 

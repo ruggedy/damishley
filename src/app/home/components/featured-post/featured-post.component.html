@@ -1,31 +1,12 @@
 <div *ngIf="featuredPost" class="featured-post">
-	<div class="row small Grid--gutters">
-		<div class="col-md-8">
-			<div class="post--container">
-				<div class="row Grid--gutters">
-					<div class="col-md-12">
-						<div class="title">
-							<h2>{{title}}</h2>
-						</div>
-					</div>
-					<div class="col-md-6">
-						<div class="post--image-container">
-							<img src="{{mainPicture}}" alt="">
-						</div>
-					</div>
-					<div class="col-md-6">
-						<div class="body--container">
-							<p>{{body | word}}</p>
-							<p class="tags"><span *ngFor="let tag of tags"> {{tag.name}} </span></p>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-		<div class="col-md-4">
-			<div class="image--container">
-				<img src="./assets/images/image3.png" alt="">
-			</div>
-		</div>
-	</div>
+	<md-toolbar color="accent">Featured Post</md-toolbar>
+    <div class="image-container">
+        <img src="{{mainPicture}}" alt="">
+    </div>
+    <h2 class="post-title">
+		<a>{{title}}</a>
+	</h2>
+    <div class="body-container">
+        {{body | word}}
+    </div>
 </div>

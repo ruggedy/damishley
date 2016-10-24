@@ -31,36 +31,41 @@ import { StoreLogMonitorModule, useLogMonitor } from '@ngrx/store-log-monitor';
 import { RouterStoreModule } from '@ngrx/router-store';
 
 @NgModule({
-	declarations: [
-		AppComponent
-	],
-	imports: [
-		BrowserModule,
-		FormsModule,
-		HttpModule,
-		MaterialModule.forRoot(),
-		AppRoutingModule,
-		PrivateSharedModule,
-		HomeModule,
-		AdminModule,
+    declarations: [
+        AppComponent
+    ],
+    imports: [
+        BrowserModule,
+        FormsModule,
+        HttpModule,
+        MaterialModule.forRoot(),
+        AppRoutingModule,
+        PrivateSharedModule,
+        HomeModule,
+        AdminModule,
 
-		StoreModule.provideStore(reducer),
+        StoreModule.provideStore(reducer),
 
-		RouterStoreModule.connectRouter(),
-
-		
-		EffectsModule.run(TagEffects),
-		EffectsModule.run(CategoryEffects),
-		EffectsModule.run(ImageUploadEffects),
-		EffectsModule.run(QuoteEffects),
-		EffectsModule.run(PostEffects)
-	],
-	providers: [
-		PostService,
-		ImageUploadService,
-		BlogService,
-		QuoteService
-	],
-	bootstrap: [AppComponent]
+        RouterStoreModule.connectRouter(),
+        StoreDevtoolsModule.instrumentStore({
+            monitor: useLogMonitor({
+                visible: true,
+                position: 'right'
+            })
+        }),
+        StoreLogMonitorModule,
+        EffectsModule.run(TagEffects),
+        EffectsModule.run(CategoryEffects),
+        EffectsModule.run(ImageUploadEffects),
+        EffectsModule.run(QuoteEffects),
+        EffectsModule.run(PostEffects)
+    ],
+    providers: [
+        PostService,
+        ImageUploadService,
+        BlogService,
+        QuoteService
+    ],
+    bootstrap: [AppComponent]
 })
 export class AppModule { }

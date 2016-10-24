@@ -14,18 +14,20 @@ import * as tag from '../../../actions/tag';
 import * as post from '../../../actions/post';
 
 @Component({
-	selector: 'app-home-page',
-	templateUrl: './home-page.component.html',
-	styleUrls: ['./home-page.component.scss'],
+    selector: 'app-side-view',
+    templateUrl: './side-view.component.html',
+    styleUrls: ['./side-view.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class HomePageComponent implements OnInit {
-	allPosts$: Observable<Post[]>
-	constructor(private store: Store<fromRoot.State>, private router: Router) {
-		this.allPosts$ = store.let(fromRoot.getAllPosts);
-	 }
+export class SideViewComponent implements OnInit {
 
-	ngOnInit() {
-	}
+    featuredPost$: Observable<Post>;
+
+    constructor(private store : Store<fromRoot.State>) {
+        this.featuredPost$ = store.let(fromRoot.getFeaturedPost);
+     }
+
+    ngOnInit() {
+    }
 
 }

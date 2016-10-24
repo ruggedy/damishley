@@ -8,6 +8,7 @@ import { MaterialModule } from '@angular/material';
 import { SharedModule, AccordionModule } from 'primeng/primeng';
 import { HomePageComponent } from './containers/home-page/home-page.component';
 import { HomeComponentsModule } from './components';
+import { SideViewComponent } from './containers/side-view/side-view.component';
 
 @NgModule({
 	imports: [
@@ -22,6 +23,7 @@ import { HomeComponentsModule } from './components';
 	declarations: [
 		HomeComponent,
 		HomePageComponent,
+		SideViewComponent,
 	],
 	providers: [
 	]
