@@ -21,3 +21,14 @@ $theme: md-light-theme($primary, $accent, $warn);
 // Alternatively, you can import and @include the theme mixins for each component
 // that you are using.
 @include angular-material-theme($theme);
+
+.secondary-theme {
+
+	$dark-primary: md-palette($md-pink);
+  	$dark-accent:  md-palette($md-grey, 50);
+  	$dark-warn:    md-palette($md-red);
+
+  	$dark-theme: md-light-theme($dark-primary, $dark-accent, $dark-warn);
+
+  	@include angular-material-theme($dark-theme);   
+}

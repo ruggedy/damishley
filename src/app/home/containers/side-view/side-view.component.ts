@@ -22,9 +22,13 @@ import * as post from '../../../actions/post';
 export class SideViewComponent implements OnInit {
 
     featuredPost$: Observable<Post>;
+	allPosts$: Observable<Post[]>;
+	allTags$: Observable<Tag[]>;
 
     constructor(private store : Store<fromRoot.State>) {
         this.featuredPost$ = store.let(fromRoot.getFeaturedPost);
+		this.allPosts$ = store.let(fromRoot.getAllPosts);
+		this.allTags$ = store.let(fromRoot.getAllTags);
      }
 
     ngOnInit() {

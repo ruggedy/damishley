@@ -49,7 +49,7 @@ import { RouterStoreModule } from '@ngrx/router-store';
         RouterStoreModule.connectRouter(),
         StoreDevtoolsModule.instrumentStore({
             monitor: useLogMonitor({
-                visible: true,
+                visible: false,
                 position: 'right'
             })
         }),
